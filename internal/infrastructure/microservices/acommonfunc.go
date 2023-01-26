@@ -22,7 +22,6 @@ const (
 )
 
 type MicroServiceStr struct {
-	//m *Result
 }
 
 type MicroServicer interface {
@@ -34,14 +33,11 @@ func NewMicroService(m MicroServiceStr) *MicroServiceStr {
 }
 
 func (m *MicroServiceStr) MicroService() service.MicroServicer {
-	//
+
 	return m
 }
 
-// 	return s.personRepository
-// }
-
-//...
+// CheckExist is a function for the checking of country existing
 func CheckExist(forCheck string, m map[string]string) (checked bool) {
 	for i := range m {
 		if forCheck == i {
@@ -54,7 +50,7 @@ func CheckExist(forCheck string, m map[string]string) (checked bool) {
 
 }
 
-//...
+// mapFromFile is the function to get data of providers from file and compose a map where the key is number in order
 func mapProvFromFile(f string) (m map[string]string) {
 	content, err := os.ReadFile(f)
 	if err != nil {
@@ -71,7 +67,7 @@ func mapProvFromFile(f string) (m map[string]string) {
 	return m
 }
 
-//...
+//mapFromFile is the function to get data of countries from file and compose a map where the key is a abbreviation
 func mapFromFile(f string) (m map[string]string) {
 	content, err := os.ReadFile(f)
 	if err != nil {

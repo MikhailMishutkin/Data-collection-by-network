@@ -25,14 +25,14 @@ func NewServer() *server {
 
 }
 
-//...
+//RunServer is a function to run an new instances from all layers and listen localhost
 func RunServer() {
 	s := NewServer()
 	microServ := s.micro.MicroService()
 	service := service.NewServiceManage(microServ)
 	handle := handler.NewHandler(service)
 	handle.RegisterR(s.Router)
-	//	s.Router.HandleFunc("/", handler.HandleConnection)
+
 	fmt.Print("server starts at port 8282 \n")
 	err := http.ListenAndServe("localhost:8282", s)
 	if err != nil {
@@ -41,7 +41,7 @@ func RunServer() {
 
 }
 
-//...
+// ServeHTTP
 func (s *server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	s.Router.ServeHTTP(w, r)
 }

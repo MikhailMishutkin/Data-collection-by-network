@@ -8,7 +8,7 @@ import (
 	"os"
 )
 
-//...
+//ReadSMS is a method to get sms data from simulator
 func (m *MicroServiceStr) ReadSMS() (outputData []model.SMSData) {
 	a := model.SMSData{}
 

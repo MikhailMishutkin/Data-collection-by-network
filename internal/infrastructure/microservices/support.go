@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-//...
+// ReadSupportData is a method to get support data from simulator
 func (m *MicroServiceStr) ReadSupportData() (outputData []model.SupportData, respStatusCode int) {
 
 	outputData = make([]model.SupportData, 0)

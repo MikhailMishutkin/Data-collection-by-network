@@ -30,12 +30,12 @@ type MicroServicer interface {
 	ReadIncidentData() (outputData []model.IncidentData, respStatusCode int)
 }
 
-//...
+//  NewServiceManage is the new instance of ServiceManage struct
 func NewServiceManage(m MicroServicer) *ServiceManage {
 	return &ServiceManage{microService: m}
 }
 
-//...
+// SortSMS is the method to sort sms-data from simulator
 func (s *ServiceManage) SortSMS() [][]model.SMSData {
 	//var sorted [][]model.SMSData
 	sorted := make([][]model.SMSData, 2)
@@ -58,7 +58,7 @@ func (s *ServiceManage) SortSMS() [][]model.SMSData {
 	return sorted
 }
 
-//...
+//SortMMS is the method to sort mms-data from simulator
 func (s *ServiceManage) SortMMS() ([][]model.MMSData, int) {
 	//var sorted [][]model.MMSData
 	sorted := make([][]model.MMSData, 2)
@@ -82,7 +82,7 @@ func (s *ServiceManage) SortMMS() ([][]model.MMSData, int) {
 	return sorted, statusCode
 }
 
-//...
+// SortEmailBySpeed is the method to sort email-data from simulator by speed
 func (s *ServiceManage) SortEmailBySpeed(f func() []model.EmailData) map[string][][]model.EmailData {
 	m := make(map[string][][]model.EmailData, 10)
 	out := make([][]model.EmailData, 2)
@@ -132,7 +132,7 @@ func (s *ServiceManage) SortEmailBySpeed(f func() []model.EmailData) map[string]
 	return m
 }
 
-//...
+//  SortWorkLoad is the method to sort support-data from simulator
 func (s *ServiceManage) SortWorkLoad() ([]int, int) {
 	var workLoad, waitingTime int
 	var supportData []int = []int{0, 0}
@@ -165,7 +165,7 @@ func (s *ServiceManage) SortWorkLoad() ([]int, int) {
 	return supportData, sCode
 }
 
-//...
+// SortIncident is the method to sort incident-data from simulator
 func (s *ServiceManage) SortIncident() (sortData []model.IncidentData, respStatusCode int) {
 	read, respStatusCode := s.microService.ReadIncidentData()
 	if respStatusCode != 200 {
@@ -187,7 +187,7 @@ func (s *ServiceManage) SortIncident() (sortData []model.IncidentData, respStatu
 	return sortData, respStatusCode
 }
 
-//...
+//GetResultData is the method to combine data recived from simulator
 func (s *ServiceManage) GetResultData(wg *sync.WaitGroup) (r model.ResultSetT) {
 
 	sortSMSChan := make(chan [][]model.SMSData)
@@ -260,7 +260,7 @@ func (s *ServiceManage) GetResultData(wg *sync.WaitGroup) (r model.ResultSetT) {
 	return r
 }
 
-//...
+//mapFromFile is the function to get data of countries from file and compose a map where the key is a abbreviation
 func mapFromFile(f string) (m map[string]string) {
 	content, err := os.ReadFile(f)
 	if err != nil {

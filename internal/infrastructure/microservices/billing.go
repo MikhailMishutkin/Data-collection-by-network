@@ -4,16 +4,17 @@ import (
 	"fmt"
 	"graduatework/internal/model"
 	"io/ioutil"
+	"log"
 	"math"
 	"strconv"
 )
 
-//...
+// ReadBilling is a method to get billing data from simulator
 func (m *MicroServiceStr) ReadBilling() (outputData model.BillingData) {
 
 	body, err := ioutil.ReadFile("./simulator/billing.data")
 	if err != nil {
-		fmt.Print("error reading the billing data", err)
+		log.Print("error reading the billing data", err)
 	}
 
 	var num uint8
