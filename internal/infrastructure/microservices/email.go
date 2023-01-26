@@ -8,7 +8,7 @@ import (
 	"os"
 )
 
-//...
+//ReadEmail is a method to get email data from simulator
 func (m *MicroServiceStr) ReadEmail() (outputData []model.EmailData) {
 	a := model.EmailData{}
 

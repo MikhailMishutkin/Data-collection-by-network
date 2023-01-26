@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-//...
+// ReadMMS is a method to get mms data from simulator
 func (m *MicroServiceStr) ReadMMS() (outputData []model.MMSData, respStatusCode int) {
 	outputData = make([]model.MMSData, 0)
 

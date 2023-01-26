@@ -9,12 +9,12 @@ import (
 	"github.com/gorilla/mux"
 )
 
-//...
+// Handler is the struct with injection of service layer
 type Handler struct {
 	sm ServiceManager
 }
 
-//...
+//ServiceManager is the interface that implemented in service layer
 type ServiceManager interface {
 	SortSMS() [][]model.SMSData
 	SortMMS() ([][]model.MMSData, int)
@@ -28,12 +28,12 @@ func NewHandler(s ServiceManager) *Handler {
 	return &Handler{sm: s}
 }
 
-//...
+//Register is the Hahdler method  that routing request from user
 func (h *Handler) RegisterR(router *mux.Router) {
 	router.HandleFunc("/api", h.HandleConnection)
 }
 
-//...
+//HandeConnection is the method for to handle displaying a data
 func (h *Handler) HandleConnection(w http.ResponseWriter, r *http.Request) {
 
 	result := &model.ResultT{}

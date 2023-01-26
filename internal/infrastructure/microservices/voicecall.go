@@ -8,7 +8,7 @@ import (
 	"os"
 )
 
-//...
+//ReadVoiceCall is a method to get voice call data from simulator
 func (m *MicroServiceStr) ReadVoiceCall() (outputData []model.VoiceCallData) {
 	a := model.VoiceCallData{}
 

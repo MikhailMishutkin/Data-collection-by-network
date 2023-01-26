@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-//...
+// ReadIncidentData is a method to get incident data from simulator
 func (m *MicroServiceStr) ReadIncidentData() (outputData []model.IncidentData, respStatusCode int) {
 
 	outputData = make([]model.IncidentData, 0)
